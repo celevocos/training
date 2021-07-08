@@ -1,14 +1,14 @@
-const express = require('express');
-
+const express= require('express');
+const cors = require('cors');
+const {User} = require('./users/users.entity');
 const {router} = require('./users/users.routes');
 
-const app = express(); //instancia de express
+const app = express();
 
-app.use(express.json()); //me habla en json
+app.use(cors());
+
+app.use(express.json());
 
 app.use('/v1/users', router);
 
-module.exports = {app}; //lo va a importar server
-
-
-//hay q crear routes, controller para score
+module.exports={ app, User };

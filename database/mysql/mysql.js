@@ -1,5 +1,5 @@
 
-const{ Sequelize, DataTypes, Model} = requiere ('sequelize');
+const{ Sequelize, DataTypes, Model} = require ('sequelize');
 
 const dbConfig ={
     host:'',
@@ -7,7 +7,7 @@ const dbConfig ={
 
 }
 
-class Mysql extends Sequelize{
+class MySql extends Sequelize{
     constructor(config){
       super(config.database, config.username, config.password, Object.assign(dbConfig, config.dbConfig));
       this.config={
@@ -21,4 +21,4 @@ class Mysql extends Sequelize{
     }
 }
 
-module.exports = {Mysql, DataTypes, Model};
+module.exports = {MySql, DataTypes, Model};

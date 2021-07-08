@@ -1,4 +1,6 @@
-const users=[
+const { User } = require('./users.entity');
+
+/* const users=[
     {
         username:'cele',
         fullname:'Celeste Vocos',
@@ -18,26 +20,32 @@ const users=[
         password: '1234'
     }
 
-    ]
-    
-    const getUsers =()=>
-    {
-    return users;
-    }
-    
-    const getUserId =(id)=>
-    {
-    let user = users.find((elemento) => elemento.username === id)
-    return user;
-    }
+    ] */
 
-    const postUser = (body) =>{
+const getUsers = async () => {
+    return await User.findAll();
+}
 
-        users.push(body);
-        return body;
-    
-    }
+const getUserId = async (id) => {
+    //let user = users.find((elemento) => elemento.username === id)
+    return await User.findAll({
+        where: {
+            username: id
+        }
+    });
+}
 
-    module.exports={getUsers, getUserId, postUser};
+const postUser = async (body) => {
+
+    //users.push(body);
+    return await User.create({
+        username: body.username,
+        fullname:body.fullname,
+        email: body.email,
+        password: body.password
+    });        
+ // { fields: ['username', 'fullname', 'email', 'password']
+}
+
+module.exports = { getUsers, getUserId, postUser };
     //module.exports={getUserId};
-    

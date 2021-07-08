@@ -1,15 +1,15 @@
 const userService = require('./users.services');
 
-const getUsers =()=>{
-    return userService.getUsers();
+const getUsers = async()=>{
+    return await  userService.getUsers();
 }
 
-const getUserId =(id)=>{
-    return userService.getUserId(id);
+const getUserId = async(id)=>{
+    return await userService.getUserId(id);
 }
 
-const postUser = (body)=> {
-    return userService.postUser(body);
+const postUser = async(body)=> {
+    return await userService.postUser(body);
 }
 
 module.exports = {getUsers, getUserId, postUser};
